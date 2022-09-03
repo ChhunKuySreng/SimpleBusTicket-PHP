@@ -17,7 +17,7 @@ function collapseForm(evt){
         const collapseRow = evt.target.parentElement.parentElement.parentElement.parentElement;
 
         // enable the edit button
-        const editBtn = collapseRow.previousElementSibling.children[3].children[0];
+        const editBtn = collapseRow.previousElementSibling.children[4].children[0];
         editBtn.disabled = false;
         editBtn.classList.remove("disabled");
 
@@ -41,6 +41,7 @@ function editOrDelete(evt){
                 <input type="hidden" name="id" value="${evt.target.dataset.id}">
                 <input type="text" class="form-control" name="busno" value="${evt.target.dataset.busno}">
                 <input type="text" class="form-control" name="bustype" value="${evt.target.dataset.bustype}">
+                <input type="text" class="form-control" name="busseat" value="${evt.target.dataset.busseat}">
 
                 <div class="d-flex justify-content-between">
                     <button type="submit" class="btn btn-success btn-sm" name="edit">SUBMIT</button>

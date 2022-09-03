@@ -46,6 +46,7 @@
 
 
     .adminDp{
+        background-color: white;
         border-radius: 50%;
     }
 

@@ -13,29 +13,11 @@
         $user_name = $row["user_name"];
     }
 ?>
-
-<!-- <header>
-        <nav id="navbar">
-            <ul>
-                <li class="nav-item">
-                    <?php 
-                        echo $user_name;
-                    ?>
-                </li>
-                <li class="nav-item">
-                    <img class="adminDp" src="../assets/img/admin_pic.jpg" alt="Admin Profile Pic" width="22px" height="22px">
-                </li>
-            </ul>
-        </nav>
-    </header> -->
     <main id="container">
         <div id="sidebar">
-            <h4><i class="fas fa-bus"></i> SBTBS</h4>
+            <h4>Justice Travel</h4>
             <div>
-                <img class="adminDp" src="../assets/img/userav-min.png" height="125px" alt="Admin Profile Pic">
-                <p>
-                    <?php  echo '@'.$user_name;  ?>
-                </p>
+                <img class="adminDp mb-1" src="../assets/img/Justice Travel.svg" height="125px" alt="Justice Travel">
                 <p>System Administrator</p>
             </div>
             <ul id="options">
@@ -53,7 +35,7 @@
                 </li>
                 <li class="option <?php if($page=='route'){ echo 'active';}?>">
                     <a href="./route.php">
-                    <i class="fas fa-road"></i> Routes    
+                    <i class="fas fa-road"></i> Route
                     </a>
                 </li>
                 

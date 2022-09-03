@@ -44,6 +44,7 @@
                 // Should be validated client-side
                 $busno = $_POST["busnumber"];
                 $bustype = $_POST["bustype"];
+                $busseat = $_POST["busseat"];
 
                 $bus_exists = exist_buses($conn,$busno);
                 $bus_added = false;
@@ -51,7 +52,7 @@
                 if(!$bus_exists)
                 {
                     // Route is unique, proceed
-                    $sql = "INSERT INTO `buses` (`bus_no`, `bustype`, `bus_created`) VALUES ('$busno', '$bustype', current_timestamp());";
+                    $sql = "INSERT INTO `buses` (`bus_no`, `bustype`, `busseat`, `bus_created`) VALUES ('$busno', '$bustype', '$busseat', current_timestamp());";
 
                     $result = mysqli_query($conn, $sql);
 
@@ -84,12 +85,13 @@
                 // EDIT ROUTES
                 $busno = strtoupper($_POST["busno"]);
                 $bustype = strtoupper($_POST["bustype"]);
+                $busseat = $_POST["busseat"];
                 $id = $_POST["id"];
                 $id_if_bus_exists = exist_buses($conn, $busno);
                 
                 if(!$id_if_bus_exists || $id == $id_if_bus_exists)
                 {
-                    $updateSql = "UPDATE `buses` SET `bus_no` = '$busno', `bustype` = '$bustype' WHERE `buses`.`id` = $id;";
+                    $updateSql = "UPDATE `buses` SET `bus_no` = '$busno', `bustype` = '$bustype', `busseat` = '$busseat' WHERE `buses`.`id` = $id;";
     
                     $updateResult = mysqli_query($conn, $updateSql);
                     $rowsAffected = mysqli_affected_rows($conn);
@@ -175,7 +177,7 @@
         }
         ?>
         <?php
-            $resultSql = "SELECT * FROM `buses` ORDER BY bus_created ASC";
+            $resultSql = "SELECT * FROM `buses` ORDER BY bus_created DESC";
                             
             $resultSqlResult = mysqli_query($conn, $resultSql);
 
@@ -208,6 +210,7 @@
                             <th>#</th>
                             <th>Bus Number</th>
                             <th>Bus Type</th>
+                            <th>Bus Seat</th>
                             <th>Actions</th>
                         </thead>
                         <?php
@@ -221,7 +224,8 @@
 
                                 $id = $row["id"];
                                 $busno = $row["bus_no"];
-                                $bustype = $row["bustype"]; 
+                                $bustype = $row["bustype"];
+                                $busseat = $row["busseat"];
                         ?>
                         <tr>
                             <td>
@@ -240,12 +244,22 @@
                                 ?>
                             </td>
                             <td>
-                            <button class="button edit-button " data-link="<?php echo $_SERVER['REQUEST_URI']; ?>" data-id="<?php 
-                                                echo $id;?>" data-busno="<?php 
-                                                echo $busno;?>"
-                                                data-bustype="<?php 
-                                                echo $bustype;?>"
-                                                >Edit</button>
+                                <?php
+                                    if($busseat == 0){
+                                        echo "<span class='error'>Not yet set</span>";
+                                    }else{
+                                        echo $busseat;
+                                    }
+                                ?>
+                            </td>
+                            <td>
+                            <button class="button edit-button"
+                                    data-link="<?php echo $_SERVER['REQUEST_URI']; ?>"
+                                    data-id="<?php echo $id;?>"
+                                    data-busno="<?php echo $busno;?>"
+                                    data-bustype="<?php echo $bustype;?>"
+                                    data-busseat="<?php echo $busseat;?>"
+                                    >Edit</button>
                             <button class="button delete-button" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="<?php 
                                                 echo $id;?>">Delete</button>
                             </td>
@@ -272,17 +286,17 @@
                         <form id="addBusForm" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="POST">
                             <div class="mb-3">
                                 <label for="busnumber" class="form-label">Bus Number</label><br>
-
-                                </span>
                                 <input type="text" class="form-control" id="busnumber" name="busnumber" required>
-                                <span id="error" class="error">
+                                <span id="error" class="error"></span>
                             </div>
                             <div class="mb-3">
                                 <label for="bustype" class="form-label">Bus Type</label><br>
-
-                                </span>
-                                <input type="text" class="form-control" id="bustype" name="bustype" required>
-                                <span id="error1" class="error">
+                                <input type="text" class="form-control" id="bustype" name="bustype">
+                                <span id="error1" class="error"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label for="busseat" class="form-label">Bus Seat</label><br>
+                                <input type="number" class="form-control" id="busseat" name="busseat">
                             </div>
                             <button type="submit" class="btn btn-success" name="submit">Submit</button>
                         </form>

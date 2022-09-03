@@ -200,7 +200,7 @@
     <header>
         <nav>
             <div>
-                    <a href="#" class="nav-item nav-logo">SBTBS</a>
+                    <a href="#" class="nav-item nav-logo">Justice Travel</a>
                     <!-- <a href="#" class="nav-item">Gallery</a> -->
             </div>
                 
@@ -318,7 +318,7 @@
         </section>
         <footer>
         <p>
-                        <i class="far fa-copyright"></i> <?php echo date('Y');?> - Simple Bus Ticket Booking System | Made with &#10084;&#65039; by Ashwin Anil
+                        <i class="far fa-copyright"></i> <?php echo date('Y');?> - Justice Travel Booking System | By Chhhu KuySreng
                         </p>
         </footer>
     </div>
