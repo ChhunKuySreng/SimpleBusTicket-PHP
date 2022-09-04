@@ -201,10 +201,7 @@
                     <h4>Bus Status</h4>
                 </div>
                 <div id="bus-results">
-                    <div>
-                        <button id="add-button" class="button btn-sm" type="button"data-bs-toggle="modal" data-bs-target="#addModal">Add Bus Details <i class="fas fa-plus"></i></button>
-                    </div>
-                    
+                    <div><button id="add-button" class="btn-primary" type="button"data-bs-toggle="modal" data-bs-target="#addModal">Add buses details</button></div>
                     <table class="table table-hover table-bordered">
                         <thead>
                             <th>#</th>
@@ -252,7 +249,7 @@
                                     }
                                 ?>
                             </td>
-                            <td>
+                            <td>                            
                             <button class="button edit-button"
                                     data-link="<?php echo $_SERVER['REQUEST_URI']; ?>"
                                     data-id="<?php echo $id;?>"
@@ -261,8 +258,8 @@
                                     data-busseat="<?php echo $busseat;?>"
                                     >Edit</button>
                             <button class="button delete-button" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="<?php 
-                                                echo $id;?>">Delete</button>
-                            </td>
+                                                echo $id;?>">Delete</button>                            
+                            </td>                       
                         </tr>
                         <?php 
                         }

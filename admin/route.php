@@ -49,13 +49,6 @@
                 $busno = $_POST["busno"];
                 $route_exists = exist_routes($conn,$viaCities,$depdate, $deptime);
                 $route_added = false;
-                var_dump($viaCities);
-                var_dump($cost);
-                var_dump($deptime);
-                var_dump($depdate);
-                var_dump($busno);
-                var_dump(!$route_exists);
-                var_dump($route_added);
                 
                 if(!$route_exists)
                 {
@@ -225,7 +218,7 @@
                         <p class="fw-light">Be the first person to add one!</p>
                         <hr>
                         <div id="addRouteAlert" class="alert alert-success" role="alert">
-                                Click on <button id="add-button" class="button btn-sm"type="button"data-bs-toggle="modal" data-bs-target="#addModal">ADD <i class="fas fa-plus"></i></button> to add a route!
+                                Click on <button id="add-button" class="button btn-sm"type="button"data-bs-toggle="modal" data-bs-target="#addModal">ADD <i class="fas fa-plus"></i></button> to add a direction!
                         </div>
                     </div>
                 </div>
@@ -243,7 +236,7 @@
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <th>ID</th>
-                                <th>Via Cities</th>
+                                <th>Direction</th>
                                 <th>Bus</th>
                                 <th>Departure Date</th>
                                 <th>Departure Time</th>
@@ -339,7 +332,7 @@
                     <div class="modal-body">
                         <form id="addRouteForm" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="POST">
                             <div class="mb-3">
-                                    <label for="viaCities" class="form-label">Via Cities</label>
+                                    <label for="viaCities" class="form-label">Direction</label>
                                 <input type="text" class="form-control" id="viaCities" name="viaCities" placeholder="Comma Separated List" required>
                                 <span id="error">
 

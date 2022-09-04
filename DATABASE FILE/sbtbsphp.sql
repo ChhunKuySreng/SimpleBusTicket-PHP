@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 18, 2021 at 06:02 AM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- Host: 127.0.0.1:3306
+-- Generation Time: Sep 04, 2022 at 06:00 AM
+-- Server version: 5.7.36
+-- PHP Version: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -26,16 +27,18 @@ SET time_zone = "+00:00";
 -- Table structure for table `bookings`
 --
 
-CREATE TABLE `bookings` (
-  `id` int(100) NOT NULL,
+DROP TABLE IF EXISTS `bookings`;
+CREATE TABLE IF NOT EXISTS `bookings` (
+  `id` int(100) NOT NULL AUTO_INCREMENT,
   `booking_id` varchar(255) NOT NULL,
   `customer_id` varchar(255) NOT NULL,
   `route_id` varchar(255) NOT NULL,
   `customer_route` varchar(200) NOT NULL,
   `booked_amount` int(100) NOT NULL,
   `booked_seat` varchar(100) NOT NULL,
-  `booking_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `booking_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `bookings`
@@ -57,29 +60,32 @@ INSERT INTO `bookings` (`id`, `booking_id`, `customer_id`, `route_id`, `customer
 -- Table structure for table `buses`
 --
 
-CREATE TABLE `buses` (
-  `id` int(100) NOT NULL,
+DROP TABLE IF EXISTS `buses`;
+CREATE TABLE IF NOT EXISTS `buses` (
+  `id` int(100) NOT NULL AUTO_INCREMENT,
   `bus_no` varchar(255) NOT NULL,
+  `bustype` varchar(100) NOT NULL,
+  `busseat` int(11) NOT NULL,
   `bus_assigned` tinyint(1) NOT NULL DEFAULT '0',
-  `bus_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `bus_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `buses`
 --
 
-INSERT INTO `buses` (`id`, `bus_no`, `bus_assigned`, `bus_created`) VALUES
-(44, 'MVL1000', 0, '2021-10-16 22:05:16'),
-(45, 'ABC0010', 1, '2021-10-17 22:32:46'),
-(46, 'XYZ7890', 0, '2021-10-17 22:33:15'),
-(47, 'BCC9999', 0, '2021-10-17 22:33:22'),
-(48, 'RDH4255', 1, '2021-10-17 22:33:36'),
-(49, 'TTH8888', 1, '2021-10-18 00:05:32'),
-(50, 'MMM9969', 1, '2021-10-18 00:06:02'),
-(51, 'LLL7699', 1, '2021-10-18 00:06:42'),
-(52, 'SSX6633', 0, '2021-10-18 00:06:52'),
-(53, 'NBS4455', 0, '2021-10-18 09:27:49'),
-(54, 'CAS3300', 1, '2021-10-18 09:36:54');
+INSERT INTO `buses` (`id`, `bus_no`, `bustype`, `busseat`, `bus_assigned`, `bus_created`) VALUES
+(44, 'MVL1000', '', 0, 0, '2021-10-16 22:05:16'),
+(45, 'ABC0010', '', 0, 1, '2021-10-17 22:32:46'),
+(46, 'XYZ7890', '', 0, 0, '2021-10-17 22:33:15'),
+(47, 'BCC9999', '', 0, 0, '2021-10-17 22:33:22'),
+(48, 'RDH4255', '', 0, 1, '2021-10-17 22:33:36'),
+(49, 'TTH8888', '', 0, 1, '2021-10-18 00:05:32'),
+(50, 'MMM9969', '', 0, 1, '2021-10-18 00:06:02'),
+(51, 'LLL7699', '', 0, 1, '2021-10-18 00:06:42'),
+(52, 'SSX6633', '', 0, 0, '2021-10-18 00:06:52'),
+(53, 'NBS4455', '', 12, 0, '2021-10-18 09:27:49');
 
 -- --------------------------------------------------------
 
@@ -87,13 +93,15 @@ INSERT INTO `buses` (`id`, `bus_no`, `bus_assigned`, `bus_created`) VALUES
 -- Table structure for table `customers`
 --
 
-CREATE TABLE `customers` (
-  `id` int(100) NOT NULL,
+DROP TABLE IF EXISTS `customers`;
+CREATE TABLE IF NOT EXISTS `customers` (
+  `id` int(100) NOT NULL AUTO_INCREMENT,
   `customer_id` varchar(255) NOT NULL,
   `customer_name` varchar(30) NOT NULL,
   `customer_phone` varchar(10) NOT NULL,
-  `customer_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `customer_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `customers`
@@ -114,16 +122,18 @@ INSERT INTO `customers` (`id`, `customer_id`, `customer_name`, `customer_phone`,
 -- Table structure for table `routes`
 --
 
-CREATE TABLE `routes` (
-  `id` int(100) NOT NULL,
+DROP TABLE IF EXISTS `routes`;
+CREATE TABLE IF NOT EXISTS `routes` (
+  `id` int(100) NOT NULL AUTO_INCREMENT,
   `route_id` varchar(255) NOT NULL,
   `bus_no` varchar(155) NOT NULL,
   `route_cities` varchar(255) NOT NULL,
   `route_dep_date` date NOT NULL,
   `route_dep_time` time NOT NULL,
   `route_step_cost` int(100) NOT NULL,
-  `route_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `route_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `routes`
@@ -145,9 +155,11 @@ INSERT INTO `routes` (`id`, `route_id`, `bus_no`, `route_cities`, `route_dep_dat
 -- Table structure for table `seats`
 --
 
-CREATE TABLE `seats` (
+DROP TABLE IF EXISTS `seats`;
+CREATE TABLE IF NOT EXISTS `seats` (
   `bus_no` varchar(155) NOT NULL,
-  `seat_booked` varchar(255) DEFAULT NULL
+  `seat_booked` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`bus_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -157,7 +169,6 @@ CREATE TABLE `seats` (
 INSERT INTO `seats` (`bus_no`, `seat_booked`) VALUES
 ('ABC0010', NULL),
 ('BCC9999', NULL),
-('CAS3300', '16'),
 ('LLL7699', NULL),
 ('MMM9969', '2,15,6,18,12'),
 ('MVL1000', '3'),
@@ -173,13 +184,15 @@ INSERT INTO `seats` (`bus_no`, `seat_booked`) VALUES
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_fullname` varchar(100) NOT NULL,
   `user_name` varchar(30) NOT NULL,
   `user_password` varchar(255) NOT NULL,
-  `user_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `user_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
@@ -188,76 +201,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `user_fullname`, `user_name`, `user_password`, `user_created`) VALUES
 (1, 'Liam Moore', 'admin', '$2y$10$7rLSvRVyTQORapkDOqmkhetjF6H9lJHngr4hJMSM2lHObJbW5EQh6', '2021-06-02 13:55:21'),
 (2, 'Test Admin', 'testadmin', '$2y$10$A2eGOu1K1TSBqMwjrEJZg.lgy.FmCUPl/l5ugcYOXv4qKWkFEwcqS', '2021-10-17 21:10:07');
+COMMIT;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `bookings`
---
-ALTER TABLE `bookings`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `buses`
---
-ALTER TABLE `buses`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `customers`
---
-ALTER TABLE `customers`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `routes`
---
-ALTER TABLE `routes`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `seats`
---
-ALTER TABLE `seats`
-  ADD PRIMARY KEY (`bus_no`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `bookings`
---
-ALTER TABLE `bookings`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
---
--- AUTO_INCREMENT for table `buses`
---
-ALTER TABLE `buses`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
---
--- AUTO_INCREMENT for table `customers`
---
-ALTER TABLE `customers`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
---
--- AUTO_INCREMENT for table `routes`
---
-ALTER TABLE `routes`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -257,11 +257,11 @@
                     </div>
                     <table class="table table-hover table-bordered">
                         <thead>
-                            <th>PNR</th>
+                            <th>Ticket Num</th>
                             <th>Name</th>
                             <th>Contact</th>
                             <th>Bus</th>
-                            <th>Route</th>
+                            <th>Direction</th>
                             <th>Seat</th>
                             <th>Amount</th>
                             <th>Departure</th>
@@ -416,7 +416,7 @@
                                 <input type="tel" class="form-control" id="cphone" name="cphone" readonly>
                             </div>
                             <div class="mb-3">
-                                <label for="routeSearch" class="form-label">Route</label>
+                                <label for="routeSearch" class="form-label">Direction</label>
                                 <!-- Search Functionality -->
                                 <div class="searchQuery">
                                     <input type="text" class="form-control searchInput" id="routeSearch" name="routeSearch">
@@ -450,6 +450,12 @@
                             <!-- Seats Diagram -->
                             <div class="mb-3">
                                 <table id="seatsDiagram">
+                                <?php
+                                    $resultSql = "SELECT * FROM `bookings` ORDER BY booking_created DESC";
+                                                    
+                                    $resultSqlResult = mysqli_query($conn, $resultSql);
+
+                                    if(!mysqli_num_rows($resultSqlResult)){ ?>
                                 <tr>
                                     <td id="seat-1" data-name="1">1</td>
                                     <td id="seat-2" data-name="2">2</td>
