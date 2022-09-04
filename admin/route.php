@@ -227,11 +227,11 @@
                 <!-- Routes Are present -->
                 <section id="route">
                     <div id="head">
-                        <h4>Route Status</h4>
+                        <h4>Schedule Status</h4>
                     </div>
                     <div id="route-results">
                         <div>
-                            <button id="add-button" class="button btn-sm"type="button"data-bs-toggle="modal" data-bs-target="#addModal">Add Route Details <i class="fas fa-plus"></i></button>
+                            <button id="add-button" class="button btn-sm"type="button"data-bs-toggle="modal" data-bs-target="#addModal">Add Schedule Details <i class="fas fa-plus"></i></button>
                         </div>
                         <table class="table table-hover table-bordered">
                             <thead>
@@ -326,7 +326,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add A Route</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Add A Schedule</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">

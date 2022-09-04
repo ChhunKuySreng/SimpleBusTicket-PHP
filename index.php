@@ -211,7 +211,7 @@
             </ul>
             <div>
                 <a href="#" class="login nav-item" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="fas fa-sign-in-alt" style="margin-right: 0.4rem;"></i>Login</a>
-                <a href="#pnr-enquiry" class="pnr nav-item">PNR Enquiry</a>
+                <a href="#pnr-enquiry" class="pnr nav-item">Check Ticket Number</a>
             </div>
         </nav>
     </header>
@@ -227,11 +227,11 @@
 
     <section id="home">
         <div id="route-search-form">
-            <h1>Simple Bus Ticket Booking System</h1>
+            <h1>Justice Travel Ticket Booking System</h1>
 
-            <p class="text-center">Welcome to Simple Bus Ticket Booking System. Login now to manage bus tickets and much more. OR, simply scroll down to check the Ticket status using Passenger Name Record (PNR number)</p>
+            <p class="text-center">Welcome to Justice Travel Ticket Booking System. Login now to manage bus tickets and much more.</p>
 
-            <center>
+            <!--<center>
                 <button class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#loginModal">Administrator Login</button>
                 
             </center>
@@ -240,7 +240,7 @@
             <center>
             <a href="#pnr-enquiry"><button class="btn btn-primary">Scroll Down <i class="fa fa-arrow-down"></i></button></a>
             </center>
-            
+            -->
         </div>
     </section>
     <div id="block">
@@ -276,10 +276,10 @@
         </section>
         <section id="pnr-enquiry">
             <div id="pnr-form">
-                <h2>PNR ENQUIRY</h2>
+                <h2>Ticket Number</h2>
                 <form action="<?php echo $_SERVER["REQUEST_URI"]; ?>" method="POST">
                     <div>
-                        <input type="text" name="pnr" id="pnr" placeholder="Enter PNR">
+                        <input type="text" name="pnr" id="pnr" placeholder="Enter ticket number">
                     </div>
                     <button type="submit" name="pnr-search">Submit</button>
                 </form>
@@ -290,9 +290,7 @@
                 <h1>About Us</h1>
                 <h4>Wanna know were it all started?</h4>
                 <p>
-                    Lorem ipsum dolor sit amet consecteturadipisicing elit. Perferendis soluta voluptas eaque, numquam veritatis aperiam expedita deleniti, nesciunt cum alias velit. Cupiditate commodi
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus cum nisi ea optio unde aliquam quia reprehenderit atque eum tenetur! 
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed placeat debitis corporis voluptates modi quibusdam quidem voluptatibus illum, maiores sequi.
+                    C Buffee
                 </p>
             </div>
         </section>
@@ -318,7 +316,7 @@
         </section>
         <footer>
         <p>
-                        <i class="far fa-copyright"></i> <?php echo date('Y');?> - Justice Travel Booking System | By Chhhu KuySreng
+                        <i class="far fa-copyright"></i> <?php echo date('Y');?> - Justice Travel Booking System | By SR15.14 MIS
                         </p>
         </footer>
     </div>

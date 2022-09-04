@@ -35,7 +35,7 @@
                 </li>
                 <li class="option <?php if($page=='route'){ echo 'active';}?>">
                     <a href="./route.php">
-                    <i class="fas fa-road"></i> Destination
+                    <i class="fas fa-road"></i> Schedule
                     </a>
                 </li>
                 

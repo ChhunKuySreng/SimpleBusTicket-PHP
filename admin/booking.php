@@ -430,7 +430,7 @@
                             <input type="hidden" name="dep_timing" id="dep_timing">
 
                             <div class="mb-3">
-                                <label for="sourceSearch" class="form-label">Source</label>
+                                <label for="sourceSearch" class="form-label">Location Start</label>
                                 <!-- Search Functionality -->
                                 <div class="searchQuery">
                                     <input type="text" class="form-control searchInput" id="sourceSearch" name="sourceSearch">
@@ -450,12 +450,6 @@
                             <!-- Seats Diagram -->
                             <div class="mb-3">
                                 <table id="seatsDiagram">
-                                <?php
-                                    $resultSql = "SELECT * FROM `bookings` ORDER BY booking_created DESC";
-                                                    
-                                    $resultSqlResult = mysqli_query($conn, $resultSql);
-
-                                    if(!mysqli_num_rows($resultSqlResult)){ ?>
                                 <tr>
                                     <td id="seat-1" data-name="1">1</td>
                                     <td id="seat-2" data-name="2">2</td>
@@ -515,7 +509,7 @@
                                     <td class="space">&nbsp;</td>
                                     <td id="seat-37" data-name="37">37</td>
                                     <td id="seat-38" data-name="38">38</td>
-                                    </tr>
+                                    </tr> 
                                 </table>
                             </div>
                             <div class="row g-3 align-items-center mb-3">
