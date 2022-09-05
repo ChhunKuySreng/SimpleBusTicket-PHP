@@ -237,7 +237,7 @@
                             <thead>
                                 <th>ID</th>
                                 <th>Direction</th>
-                                <th>Bus</th>
+                                <th>Bus Number</th>
                                 <th>Departure Date</th>
                                 <th>Departure Time</th>
                                 <th>Cost</th>
